@@ -1,6 +1,6 @@
 
 Modulo 1 - de 18 a 22 horas 
-terminar los modelos que faltan 0.5 
+terminar los modelos que faltan 0.5 - image y cardAd-
 integrar Firebase 3
 
 
