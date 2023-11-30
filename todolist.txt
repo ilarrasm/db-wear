@@ -1,0 +1,27 @@
+
+Modulo 1 - de 18 a 22 horas 
+terminar los modelos que faltan 0.5 
+integrar Firebase 3
+
+
+Modulo 2 
+levantar rtk y rtk query 2
+crear slice de app status con el isMobile, handleSSR y su customHook 2
+
+
+Modulo 3
+crear servicio e integrarlo a la home 1 
+crear servicio e integrarlo endpoint al ads Detail  1
+Crear Slice AdsDetails con el color y tamaño para elegir. 2
+Crear helper que permita pasar nuestro producto seleccionado a un texto que se enviará a al whatsApp de dani. 1
+
+Modulo 4 
+crear version desktop 2 puntos
+
+Modulo 5 
+Deployar en vercel -- 3 puntos - primera salida a prod 29 puntos 
+
+Modulo 6 
+Automatizar deploy 
+
+Modulo 7 
