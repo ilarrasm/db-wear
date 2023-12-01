@@ -1,5 +1,6 @@
 import { Box, Typography, styled } from "@mui/material";
 import Image from "next/image";
+import Link from "next/link";
 import React, { memo } from "react";
 
 interface CardProduct {
@@ -8,6 +9,7 @@ interface CardProduct {
   img: string; // esto pasa a ser una objeto con todo lo que necesitamos para la img
   info: string;
   subTitle: string;
+  id: string;
 }
 
 const StyledHeader = styled(Box)(
@@ -27,43 +29,59 @@ const StyledHeader = styled(Box)(
 `
 );
 
-const CardProduct = ({ title, price, img, info, subTitle }: CardProduct) => {
+const CardProduct = ({
+  title,
+  price,
+  img,
+  info,
+  subTitle,
+  id,
+}: CardProduct) => {
   return (
-    <Box
-      display="flex"
-      flexDirection="column"
-      alignItems="center"
-      mx="1rem"
-      borderRadius="8px"
-      bgcolor="#F5F5F5"
-      overflow="hidden"
+    <Link
+      href={`/product/${id}`}
+      style={{ color: "initial", textDecoration: "none" }}
     >
-      {/* Header */}
-      <StyledHeader>
-        <Image src="/headerHome.jpg" fill alt={img} />
-        {!!price && <Typography p=".25rem 1rem 0">{price}</Typography>}
-      </StyledHeader>
-      {/* Body */}
       <Box
         display="flex"
         flexDirection="column"
-        width="100%"
-        p=".25rem 0 1rem 1rem"
-        rowGap=".25rem"
+        alignItems="center"
+        mx="1rem"
+        borderRadius="8px"
+        bgcolor="#F5F5F5"
+        overflow="hidden"
       >
-        <Typography component="h3" variant="h3">
-          {title}
-        </Typography>
-        <Typography fontSize="0.6875rem" fontWeight="300">
-          {subTitle}
-        </Typography>
-        {!!info && (
-          <Typography fontSize="0.5625rem" fontStyle="italic" fontWeight="100">
-            {info}
+        {/* Header */}
+        <StyledHeader>
+          <Image src="/headerHome.jpg" fill alt={img} />
+          {!!price && <Typography p=".25rem 1rem 0">{price}</Typography>}
+        </StyledHeader>
+        {/* Body */}
+        <Box
+          display="flex"
+          flexDirection="column"
+          width="100%"
+          p=".25rem 0 1rem 1rem"
+          rowGap=".25rem"
+        >
+          <Typography component="h3" variant="h3">
+            {title}
           </Typography>
-        )}
+          <Typography fontSize="0.6875rem" fontWeight="300">
+            {subTitle}
+          </Typography>
+          {!!info && (
+            <Typography
+              fontSize="0.5625rem"
+              fontStyle="italic"
+              fontWeight="100"
+            >
+              {info}
+            </Typography>
+          )}
+        </Box>
       </Box>
-    </Box>
+    </Link>
   );
 };
 
