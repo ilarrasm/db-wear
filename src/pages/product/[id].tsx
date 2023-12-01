@@ -5,10 +5,22 @@ import { useRouter } from "next/router";
 import ProductActionSection from "@/sections/productDetail/ProductActionSection/ProductActionSection";
 import ProductDetailsHeader from "@/sections/productDetail/ProductDetailsHeader/ProductDetailsHeader";
 import ProductDescriptionSection from "@/sections/productDetail/ProductDescriptionSection/ProductDescriptionSection";
-import { useProductSetDetailQuery } from "@/services/productDetail/productDetail";
+import { useProductSetDetailQuery } from "@/services/productSetServices/productSetServices";
+import { wrapper } from "@/redux/store";
+import handleSSRIsMobile from "@/utils/SSR/handleSSRIsMobile";
+import useIsMobile from "@/hooks/useIsMobile";
+
+export const getServerSideProps = wrapper.getServerSideProps(
+  (store) => async (ctx) => {
+    handleSSRIsMobile(ctx.req, store);
+    return { props: {} };
+  }
+);
 
 const ProductDetails: NextPageWithLayout = () => {
   const { query } = useRouter();
+  const isMobile = useIsMobile();
+
   const { data, isSuccess } = useProductSetDetailQuery(
     (query.id as string) || "",
     {
@@ -19,6 +31,7 @@ const ProductDetails: NextPageWithLayout = () => {
   if (!isSuccess) {
     return null;
   }
+  console.log({ isMobile });
   return (
     <>
       {/* 

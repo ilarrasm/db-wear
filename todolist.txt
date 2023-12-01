@@ -1,9 +1,7 @@
 
 TODO
 
-Modulo 2 
-levantar rtk y rtk query 2
-crear slice de app status con el isMobile, handleSSR y su customHook 2
+
 
 
 Modulo 3
@@ -27,6 +25,11 @@ completed
 Modulo 1 - de 18 a 22 horas 
 integrar Firebase 3
 terminar los modelos que faltan 0.5 - image y cardAd-
+
+Modulo 2 
+levantar rtk y rtk query 2
+crear slice de app status con el isMobile, handleSSR y su customHook 2
+
 
 Modulo 5 
 Deployar en vercel -- 3 puntos
