@@ -17,7 +17,7 @@ const ProductDetailsHeader = ({
 }) => {
   return (
     <Box display="flex" flexDirection="column" gap="1rem">
-      <Box position="relative" height="300px">
+      <Box position="relative" height="600px">
         <Image
           src={image[0].src}
           alt={image[0].alt}
@@ -29,10 +29,10 @@ const ProductDetailsHeader = ({
         <Typography variant="h1" textAlign="left">
           {title}
         </Typography>
-        <Typography variant="body2" ml=".4rem">
-          {subTitle}
+        <Typography variant="body2" fontStyle="italic" fontSize="10px" ml=".1rem">
+          Temporada {subTitle}
         </Typography>
-        <Typography variant="body2" ml=".4rem">
+        <Typography variant="body2" ml=".1rem">
           {price}
         </Typography>
       </Box>

@@ -14,6 +14,7 @@ import {
   useGetListOfProductsQuery,
 } from "@/services/productSetServices/productSetServices";
 import handleSSRIsMobile from "@/utils/SSR/handleSSRIsMobile";
+import priceFormatter from "@/utils/helpers/priceFormatter";
 
 export const getServerSideProps: GetServerSideProps =
   wrapper.getServerSideProps((store) => async (ctx) => {
@@ -69,9 +70,9 @@ const Home: NextPageWithLayout = () => {
             <CardProduct
               id={set.id}
               title={set.name}
-              price={`${set.price || "Consultar"}`}
+              price={priceFormatter(set.price)}
               img={set.images[0]} // arreglar imagen
-              info={"2 colores - envio a toda españa."} // e.colors => formatear texto
+              info={transformAmountcolorsToText(set.colors.length)} // e.colors => formatear texto
               subTitle={set.season} // temporada
               key={set.name}
             />
