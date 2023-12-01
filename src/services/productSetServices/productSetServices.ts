@@ -1,12 +1,18 @@
 import { createApi, fakeBaseQuery } from "@reduxjs/toolkit/query/react";
-import { doc, getDoc } from "firebase/firestore";
+import { collection, doc, getDoc, getDocs } from "firebase/firestore";
 import { db } from "../../../firebase";
 import ProductDetail from "@/domain/models/ProductDetails";
+import { HYDRATE } from "next-redux-wrapper";
 
 export const productSetServices = createApi({
   baseQuery: fakeBaseQuery(),
+  extractRehydrationInfo(action, { reducerPath }) {
+    if (action.type === HYDRATE) {
+      return action.payload[reducerPath];
+    }
+  },
   endpoints: (builder) => ({
-    ProductSetDetail: builder.query<ProductDetail, string>({
+    getProductSetDetail: builder.query<ProductDetail, string>({
       queryFn: async (idSet) => {
         try {
           const ProductSet = doc(db, "ProductSet", idSet);
@@ -29,10 +35,26 @@ export const productSetServices = createApi({
         }
       },
     }),
+    getListOfProducts: builder.query<ProductDetail[], void>({
+      queryFn: async () => {
+        const ProductSet = collection(db, "ProductSet");
+        const setSnapshot = await getDocs(ProductSet);
+        const SetsList = setSnapshot.docs.map((doc) => ({
+          ...doc.data(),
+          id: doc.id,
+        })) as ProductDetail[];
+        return { data: SetsList };
+      },
+    }),
   }),
 });
 
-export const { useProductSetDetailQuery } = productSetServices;
+export const {
+  useGetProductSetDetailQuery,
+  useGetListOfProductsQuery,
+  endpoints: { getProductSetDetail, getListOfProducts },
+  util: { getRunningQueriesThunk: getRunningQueriesThunkSetService },
+} = productSetServices;
 
 export default productSetServices;
 

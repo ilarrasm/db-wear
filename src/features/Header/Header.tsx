@@ -1,6 +1,7 @@
 import { Box } from "@mui/material";
 import React, { memo } from "react";
 import Logo from "../Logo/Logo";
+import Link from "next/link";
 
 const Header = () => {
   return (
@@ -16,7 +17,9 @@ const Header = () => {
       {/* <Box>
         <MenuOutlinedIcon fontSize="large" />
       </Box> */}
-      <Logo />
+      <Link href="/" style={{ color: "inherit", textDecoration: "none" }}>
+        <Logo />
+      </Link>
       {/* <Box onClick={() => {}}>
         <ShoppingCartOutlinedIcon fontSize="large" />
       </Box> */}
