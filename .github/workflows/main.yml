@@ -6,8 +6,8 @@ on:
   push:
     tags:
       - 'dbwear-*' # Se desencadena solo cuando se crea una etiqueta con el patrón dbwear-
-    branches:
-      - main
+    branches-ignore:
+      - dev
 
 jobs:
   Deploy-Production:
