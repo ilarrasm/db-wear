@@ -1,3 +1,4 @@
+import { default as ImageProps } from "@/domain/models/Image";
 import { Box, Typography, styled } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
@@ -6,7 +7,7 @@ import React, { memo } from "react";
 interface CardProduct {
   title: string;
   price: string;
-  img: string; // esto pasa a ser una objeto con todo lo que necesitamos para la img
+  img: ImageProps; // esto pasa a ser una objeto con todo lo que necesitamos para la img
   info: string;
   subTitle: string;
   id: string;
@@ -53,7 +54,7 @@ const CardProduct = ({
       >
         {/* Header */}
         <StyledHeader>
-          <Image src="/headerHome.jpg" fill alt={img} />
+          <Image src={img.src} fill alt={img.alt} />
           {!!price && <Typography p=".25rem 1rem 0">{price}</Typography>}
         </StyledHeader>
         {/* Body */}

@@ -5,6 +5,7 @@ interface Product {
   name: string;
   price: number | null;
   images: Image[];
+  season: string;
   sizes?: string[];
   colors?: string[];
   description?: string;
