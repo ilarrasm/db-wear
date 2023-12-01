@@ -1,8 +1,5 @@
 
-Modulo 1 - de 18 a 22 horas 
-terminar los modelos que faltan 0.5 - image y cardAd-
-integrar Firebase 3
-
+TODO
 
 Modulo 2 
 levantar rtk y rtk query 2
@@ -18,10 +15,18 @@ Crear helper que permita pasar nuestro producto seleccionado a un texto que se e
 Modulo 4 
 crear version desktop 2 puntos
 
-Modulo 5 
-Deployar en vercel -- 3 puntos - primera salida a prod 29 puntos 
 
 Modulo 6 
 Automatizar deploy 
 
-Modulo 7 
+Modulo 7
+
+
+completed
+
+Modulo 1 - de 18 a 22 horas 
+integrar Firebase 3
+terminar los modelos que faltan 0.5 - image y cardAd-
+
+Modulo 5 
+Deployar en vercel -- 3 puntos

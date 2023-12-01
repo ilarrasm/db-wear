@@ -1,4 +1,4 @@
-import { Box, Button, Typography } from "@mui/material";
+import { Box, Button, Typography, useTheme } from "@mui/material";
 import React, { memo } from "react";
 
 /* 
@@ -18,6 +18,7 @@ const ProductActionSection = ({
   colors,
   sizes,
 }: ProductActionSectionProps) => {
+  const theme = useTheme();
   return (
     <Box p="1rem">
       <Box>
@@ -40,11 +41,13 @@ const ProductActionSection = ({
       </Box>
       <Button
         variant="contained"
+        fullWidth
         onClick={() => {
           console.log(
             `https://api.whatsapp.com/send?phone=${"aca va el numero"}&text=pito${productId}`
           );
         }}
+        sx={{ bgcolor: theme.palette.common.black }}
       >
         Consultar
       </Button>
