@@ -46,7 +46,8 @@ const ProductDetails: NextPageWithLayout = () => {
       <ProductDetailsHeader
         title={data?.name || ""}
         price={`$ ${data?.price}`} // crear formateador
-        image={"/headerHome.jpg"}
+        image={data?.images || []}
+        subTitle={data?.season || ""}
       />
       {/* ProductCustomizationSection */}
       <ProductActionSection

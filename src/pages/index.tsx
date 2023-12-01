@@ -69,12 +69,10 @@ const Home: NextPageWithLayout = () => {
             <CardProduct
               id={set.id}
               title={set.name}
-              price={`${set.price}`}
-              img={
-                "este es el alt de la img cambiar prop por su respectivo objeto"
-              } // arreglar imagen
+              price={`${set.price || "Consultar"}`}
+              img={set.images[0]} // arreglar imagen
               info={"2 colores - envio a toda españa."} // e.colors => formatear texto
-              subTitle={"Temporada 2000"} // temporada
+              subTitle={set.season} // temporada
               key={set.name}
             />
           ))}

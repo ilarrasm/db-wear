@@ -1,37 +1,38 @@
 
 TODO
 
-Modulo 4
-crear servicio e integrarlo a la home 1 DESDE EL SSR
-crear servicio e integrarlo endpoint al adsDetail  1 desde el SSR listo
-
-Modulo 5
-Añadir temporada en el setProduct
-Añadir temporada en el productDetails page
-Añadir temporada en el CardAd
-Modulo 6
-
-Imagenes arreglarlo
+Modulo 7
 Crear formateador de precios! preguntar a chat gpt
 Crear formateador de texto del cardAd sobre los colores
 Crear helper que permita pasar nuestro producto seleccionado a un texto que se enviará a al whatsApp de dani. 1 punto
 
 
 
-Modulo 7
+Modulo 8
 UI Review 3 puntos
 
-Modulo 8
+Modulo 9
 crear version desktop 5 puntos
 
 
-Modulo 9
+Modulo 10
 Cargas imagenes
 Cargas productos
 
-Modulo 10 
+Modulo 11
 Manejo de errores.
 
+Modulo 12 
+Funcionalidades
+Carousel en productDetails
+expandir imagenes productDetails
+Seleccionar talles y colores
+ShareButton (only Mobile)
+Otros productos abajo de adsDetail
+
+
+Modulo 13 
+Ecommerce
 
 COMPLETED
 
@@ -45,3 +46,19 @@ crear slice de app status con el isMobile, handleSSR y su customHook 2
 
 Modulo 3 
 Deployar en vercel -- 3 puntos (0.5)
+
+Modulo 4
+crear servicio e integrarlo a la home 1 DESDE EL SSR
+crear servicio e integrarlo endpoint al adsDetail  1 desde el SSR listo
+
+Modulo 5
+season
+Añadir temporada en el setProduct
+Añadir temporada en el productDetails page
+Añadir temporada en el CardAd
+
+
+Modulo 6
+Imagenes type en models Product
+Añadir image en CardAd
+Añadir image en productDetails
