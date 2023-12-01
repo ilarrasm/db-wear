@@ -1,33 +1,45 @@
 import DefaultLayout from "@/layouts/Default/Default.layout";
-import { ReactElement } from "react";
+import { ReactElement, useEffect } from "react";
 import { NextPageWithLayout } from "../_app";
 import { useRouter } from "next/router";
 import ProductActionSection from "@/sections/productDetail/ProductActionSection/ProductActionSection";
 import ProductDetailsHeader from "@/sections/productDetail/ProductDetailsHeader/ProductDetailsHeader";
 import ProductDescriptionSection from "@/sections/productDetail/ProductDescriptionSection/ProductDescriptionSection";
+import { useProductSetDetailQuery } from "@/services/productDetail/productDetail";
 
 const ProductDetails: NextPageWithLayout = () => {
   const { query } = useRouter();
-  const description = "de prueba";
+  const { data, isSuccess } = useProductSetDetailQuery(
+    (query.id as string) || "",
+    {
+      skip: !query.id,
+    }
+  );
+
+  if (!isSuccess) {
+    return null;
+  }
   return (
     <>
       {/* 
       Head */}
       <ProductDetailsHeader
-        title="Temporada que se yo"
-        price="$ 1.000"
-        image="/headerHome.jpg"
+        title={data?.name || ""}
+        price={`$ ${data?.price}`} // crear formateador
+        image={"/headerHome.jpg"}
       />
       {/* ProductCustomizationSection */}
       <ProductActionSection
-        productId={query.id as string}
-        colors={[]}
-        sizes={[]}
+        productId={data?.id || ""}
+        colors={data?.colors || []}
+        sizes={data?.sizes || []}
       />
       {/* 
       ProductDescriptionSection
       */}
-      <ProductDescriptionSection>{description}</ProductDescriptionSection>
+      <ProductDescriptionSection>
+        {data?.description || ""}
+      </ProductDescriptionSection>
     </>
   );
 };

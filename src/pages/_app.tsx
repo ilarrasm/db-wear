@@ -4,6 +4,8 @@ import type { AppProps } from "next/app";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import theme from "@/style/theme";
 import { Roboto } from "next/font/google";
+import { ApiProvider } from "@reduxjs/toolkit/dist/query/react";
+import productDetailService from "@/services/productDetail/productDetail";
 
 // If loading a variable font, you don't need to specify the font weight
 const inter = Roboto({
@@ -26,19 +28,21 @@ export default function MyApp({ Component, pageProps }: AppPropsWithLayout) {
   const getLayout = Component.getLayout ?? ((page) => page);
 
   return getLayout(
-    <ThemeProvider theme={theme}>
-      {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
-      <CssBaseline />
-      <style jsx global>{`
-        html {
-          font-family: ${inter.style.fontFamily};
-        }
-        body {
-          -webkit-font-smoothing: antialiased;
-          -moz-osx-font-smoothing: grayscale;
-        }
-      `}</style>
-      <Component {...pageProps} />
-    </ThemeProvider>
+    <ApiProvider api={productDetailService}>
+      <ThemeProvider theme={theme}>
+        {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
+        <CssBaseline />
+        <style jsx global>{`
+          html {
+            font-family: ${inter.style.fontFamily};
+          }
+          body {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+          }
+        `}</style>
+        <Component {...pageProps} />
+      </ThemeProvider>
+    </ApiProvider>
   );
 }
