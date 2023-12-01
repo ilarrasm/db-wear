@@ -1,32 +1,47 @@
 
 TODO
 
-Modulo 2 
-levantar rtk y rtk query 2
-crear slice de app status con el isMobile, handleSSR y su customHook 2
+Modulo 4
+crear servicio e integrarlo a la home 1 DESDE EL SSR
+crear servicio e integrarlo endpoint al adsDetail  1 desde el SSR listo
+
+Modulo 5
+Añadir temporada en el setProduct
+Añadir temporada en el productDetails page
+Añadir temporada en el CardAd
+Modulo 6
+
+Imagenes arreglarlo
+Crear formateador de precios! preguntar a chat gpt
+Crear formateador de texto del cardAd sobre los colores
+Crear helper que permita pasar nuestro producto seleccionado a un texto que se enviará a al whatsApp de dani. 1 punto
 
 
-Modulo 3
-crear servicio e integrarlo a la home 1 
-crear servicio e integrarlo endpoint al ads Detail  1
-Crear Slice AdsDetails con el color y tamaño para elegir. 2
-Crear helper que permita pasar nuestro producto seleccionado a un texto que se enviará a al whatsApp de dani. 1
-
-Modulo 4 
-crear version desktop 2 puntos
-
-
-Modulo 6 
-Automatizar deploy 
 
 Modulo 7
+UI Review 3 puntos
+
+Modulo 8
+crear version desktop 5 puntos
 
 
-completed
+Modulo 9
+Cargas imagenes
+Cargas productos
+
+Modulo 10 
+Manejo de errores.
+
+
+COMPLETED
 
 Modulo 1 - de 18 a 22 horas 
 integrar Firebase 3
 terminar los modelos que faltan 0.5 - image y cardAd-
 
-Modulo 5 
-Deployar en vercel -- 3 puntos
+Modulo 2 
+levantar rtk y rtk query 2
+crear slice de app status con el isMobile, handleSSR y su customHook 2
+
+Modulo 3 
+Deployar en vercel -- 3 puntos (0.5)

@@ -5,7 +5,8 @@ import { CssBaseline, ThemeProvider } from "@mui/material";
 import theme from "@/style/theme";
 import { Roboto } from "next/font/google";
 import { ApiProvider } from "@reduxjs/toolkit/dist/query/react";
-import productDetailService from "@/services/productDetail/productDetail";
+import { Provider } from "react-redux";
+import { wrapper } from "@/redux/store";
 
 // If loading a variable font, you don't need to specify the font weight
 const inter = Roboto({
@@ -23,12 +24,12 @@ type AppPropsWithLayout = AppProps & {
   Component: NextPageWithLayout;
 };
 
-export default function MyApp({ Component, pageProps }: AppPropsWithLayout) {
+export default function MyApp({ Component, ...rest }: AppPropsWithLayout) {
   // Use the layout defined at the page level, if available
+  const { store, props } = wrapper.useWrappedStore(rest);
   const getLayout = Component.getLayout ?? ((page) => page);
-
   return getLayout(
-    <ApiProvider api={productDetailService}>
+    <Provider store={store}>
       <ThemeProvider theme={theme}>
         {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
         <CssBaseline />
@@ -41,8 +42,8 @@ export default function MyApp({ Component, pageProps }: AppPropsWithLayout) {
             -moz-osx-font-smoothing: grayscale;
           }
         `}</style>
-        <Component {...pageProps} />
+        <Component {...props.pageProps} />
       </ThemeProvider>
-    </ApiProvider>
+    </Provider>
   );
 }
