@@ -13,6 +13,7 @@ import {
 import { wrapper } from "@/redux/store";
 import handleSSRIsMobile from "@/utils/SSR/handleSSRIsMobile";
 import useIsMobile from "@/hooks/useIsMobile";
+import priceFormatter from "@/utils/helpers/priceFormatter";
 
 export const getServerSideProps = wrapper.getServerSideProps(
   (store) => async (ctx) => {
@@ -45,13 +46,13 @@ const ProductDetails: NextPageWithLayout = () => {
       Head */}
       <ProductDetailsHeader
         title={data?.name || ""}
-        price={`$ ${data?.price}`} // crear formateador
+        price={priceFormatter(data?.price)} // crear formateador
         image={data?.images || []}
         subTitle={data?.season || ""}
       />
       {/* ProductCustomizationSection */}
       <ProductActionSection
-        productId={data?.id || ""}
+        productId={data?.name || ""}
         colors={data?.colors || []}
         sizes={data?.sizes || []}
       />
