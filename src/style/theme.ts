@@ -18,19 +18,19 @@ const theme = createTheme({
   },
   typography: {
     h1: {
-      fontSize: "2rem",
+      fontSize: "1.7em",
       fontWeight: "black",
       textAlign: "center",
     },
     h2: {
-      fontSize: "1.5rem",
+      fontSize: "1.5em",
       fontStyle: "normal",
       fontWeight: "bold",
       lineHeight: "normal",
       textAlign: "center",
     },
     h3: {
-      fontSize: "1.125rem",
+      fontSize: "1.125em",
       fontWeight: "bold",
     },
   },

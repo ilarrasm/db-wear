@@ -7,6 +7,7 @@ import { Roboto } from "next/font/google";
 import { ApiProvider } from "@reduxjs/toolkit/dist/query/react";
 import { Provider } from "react-redux";
 import { wrapper } from "@/redux/store";
+import useWrapper from "@/redux/hooks/useWrapper";
 
 // If loading a variable font, you don't need to specify the font weight
 const inter = Roboto({
@@ -20,13 +21,13 @@ export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
   getLayout?: (page: ReactElement) => ReactNode;
 };
 
-type AppPropsWithLayout = AppProps & {
+export type AppPropsWithLayout = AppProps & {
   Component: NextPageWithLayout;
 };
 
 export default function MyApp({ Component, ...rest }: AppPropsWithLayout) {
   // Use the layout defined at the page level, if available
-  const { store, props } = wrapper.useWrappedStore(rest);
+  const { store, props } = useWrapper(rest);
   const getLayout = Component.getLayout ?? ((page) => page);
   return getLayout(
     <Provider store={store}>
