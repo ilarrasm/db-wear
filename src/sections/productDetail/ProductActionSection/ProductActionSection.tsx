@@ -1,3 +1,4 @@
+import whatsAppSendFormatter from "@/utils/helpers/whatsAppSendFormatter";
 import { Box, Button, Typography, useTheme } from "@mui/material";
 import React, { memo } from "react";
 
@@ -11,21 +12,39 @@ interface ProductActionSectionProps {
   productId: string;
   colors: string[];
   sizes: string[];
+  subTitle: string;
+  title: string;
+  price: string;
 }
 
 const ProductActionSection = ({
   productId,
   colors,
   sizes,
+  title,
+  subTitle,
+  price,
 }: ProductActionSectionProps) => {
   const theme = useTheme();
   return (
     <Box p="1rem">
-      <Box>
+      <Typography variant="h1" textAlign="left">
+        {title}
+      </Typography>
+      <Typography variant="body2" fontStyle="italic" fontSize="10px" ml=".1rem">
+        Temporada {subTitle}
+      </Typography>
+      <Typography variant="body2" ml=".1rem">
+        {price}
+      </Typography>
+
+      <Box pt="1rem">
         <Typography variant="h3">Talles</Typography>
         <Box display="flex" gap="1rem" py="1rem">
           {sizes.map((el) => (
-            <span key={el}>{el}</span>
+            <Typography variant="body2" key={el} ml=".1rem">
+              {el}
+            </Typography>
           ))}
         </Box>
       </Box>
@@ -33,7 +52,7 @@ const ProductActionSection = ({
         <Typography variant="h3">Color/es</Typography>
         <Box display="flex" gap="1rem" py="1rem">
           {colors.map((color) => (
-            <Typography variant="body2" key={color}>
+            <Typography variant="body2" key={color} ml=".1rem">
               {color}
             </Typography>
           ))}
@@ -43,11 +62,12 @@ const ProductActionSection = ({
         variant="contained"
         fullWidth
         onClick={() => {
-          console.log(
-            `https://api.whatsapp.com/send?phone=${"aca va el numero"}&text=pito${productId}`
-          );
+          window.open(whatsAppSendFormatter(productId), "_blank");
         }}
-        sx={{ bgcolor: theme.palette.common.black }}
+        sx={{
+          "&": { bgcolor: theme.palette.common.black },
+          "&:hover": { bgcolor: theme.palette.common.black },
+        }}
       >
         Consultar
       </Button>

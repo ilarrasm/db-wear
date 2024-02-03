@@ -13,6 +13,8 @@ import {
 import { wrapper } from "@/redux/store";
 import handleSSRIsMobile from "@/utils/SSR/handleSSRIsMobile";
 import useIsMobile from "@/hooks/useIsMobile";
+import priceFormatter from "@/utils/helpers/priceFormatter";
+import { Box, styled } from "@mui/material";
 
 export const getServerSideProps = wrapper.getServerSideProps(
   (store) => async (ctx) => {
@@ -32,36 +34,52 @@ export const getServerSideProps = wrapper.getServerSideProps(
   }
 );
 
+const StyledContainer = styled(`div`)(
+  ({ theme }) => `
+  display: grid;
+  grid-template-columns: 1fr; 
+  grid-template-rows: 80vh repeat(2, auto);
+  ${theme.breakpoints.up("lg")} {
+  grid-template-rows: 80vh auto; 
+  grid-template-columns: repeat(12, 1fr);
+  grid-row-gap: 1rem;
+  grid-column-gap: 1rem;
+  text-align: justify;
+  div:first-of-type {
+    grid-area: 1 / 1 / 2 / 13;
+  }
+  div:nth-of-type(2) {
+    grid-area: 2 / 10 / 3 / 13;
+  }
+  div:nth-of-type(3) {
+    grid-area: 2 / 1 / 3 / 10;
+  }
+}`
+);
+
 const ProductDetails: NextPageWithLayout = () => {
   const { query } = useRouter();
-  const isMobile = useIsMobile();
 
   const { data } = useGetProductSetDetailQuery((query.id as string) || "", {
     skip: !query.id,
   });
   return (
-    <>
-      {/* 
-      Head */}
-      <ProductDetailsHeader
-        title={data?.name || ""}
-        price={`$ ${data?.price}`} // crear formateador
-        image={data?.images || []}
-        subTitle={data?.season || ""}
-      />
-      {/* ProductCustomizationSection */}
-      <ProductActionSection
-        productId={data?.id || ""}
-        colors={data?.colors || []}
-        sizes={data?.sizes || []}
-      />
-      {/* 
-      ProductDescriptionSection
-      */}
-      <ProductDescriptionSection>
-        {data?.description || ""}
-      </ProductDescriptionSection>
-    </>
+    <Box display="flex" justifyContent="center" width="100%">
+      <StyledContainer>
+        <ProductDetailsHeader image={data?.images || []} />
+        <ProductActionSection
+          title={data?.name || ""}
+          subTitle={data?.season || ""}
+          price={priceFormatter(data?.price)} // crear formateador
+          productId={data?.name || ""}
+          colors={data?.colors || []}
+          sizes={data?.size || []}
+        />
+        <ProductDescriptionSection>
+          {data?.description || ""}
+        </ProductDescriptionSection>
+      </StyledContainer>
+    </Box>
   );
 };
 

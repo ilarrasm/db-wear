@@ -1,28 +1,26 @@
-
 TODO
 
-Modulo 7
-Crear formateador de precios! preguntar a chat gpt
-Crear formateador de texto del cardAd sobre los colores
-Crear helper que permita pasar nuestro producto seleccionado a un texto que se enviará a al whatsApp de dani. 1 punto
 
 
 
-Modulo 8
-UI Review 3 puntos
-
-Modulo 9
-crear version desktop 5 puntos
+////
 
 
-Modulo 10
-Cargas imagenes
+
+Modulo Devops
+Implementar pipeline custom.
+
+
+-- Salida a producción --
+
 Cargas productos
 
-Modulo 11
+
+Modulo X
 Manejo de errores.
 
-Modulo 12 
+Modulo Y 
+mejora UI de los colores
 Funcionalidades
 Carousel en productDetails
 expandir imagenes productDetails
@@ -31,7 +29,7 @@ ShareButton (only Mobile)
 Otros productos abajo de adsDetail
 
 
-Modulo 13 
+Futuro projecto 
 Ecommerce
 
 COMPLETED
@@ -62,3 +60,28 @@ Modulo 6
 Imagenes type en models Product
 Añadir image en CardAd
 Añadir image en productDetails
+
+Modulo 7
+Crear helper que permita pasar nuestro producto seleccionado a un texto que se enviará a al whatsApp de dani.
+Crear formateador de precios! preguntar a chat gpt.
+Crear formateador de texto del cardAd sobre los colores.
+---pasar el numero de telefono como variable de entorno
+
+
+Modulo 8
+UI Review
+Cambiar titulo
+Arreglar alineaciòn en header de productDetails
+Arreglas la secciòn de accions productDetailsDetails 
+Arreglas la secciòn de descripción productDetailsDetails 
+
+
+Modulo 9
+crear version desktop home y ficha
+
+Modulo Final
+Cargas imagenes -> sidney, body suit bali, amy,kyra, claret, amsterdam, paris, slip kik, regina
+Cargar talles
+foto de portada
+Mejorar h1 Desktop y mobile
+Ordenarlos por temporada
