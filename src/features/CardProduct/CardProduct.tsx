@@ -54,15 +54,24 @@ const CardProduct = ({
       >
         {/* Header */}
         <StyledHeader>
-          <Image src={img.src} fill alt={img.alt} />
-          {!!price && <Typography p=".25rem 1rem 0">{price}</Typography>}
+          <Image
+            src={img.src}
+            fill
+            alt={img.alt}
+            style={{ objectFit: "cover" }}
+          />
+          {!!price && (
+            <Typography p=".25rem 1rem 0" variant="body2">
+              {price}
+            </Typography>
+          )}
         </StyledHeader>
         {/* Body */}
         <Box
           display="flex"
           flexDirection="column"
           width="100%"
-          p=".25rem 0 1rem 1rem"
+          p="1rem 0 1rem 1rem"
           rowGap=".25rem"
         >
           <Typography component="h3" variant="h3">

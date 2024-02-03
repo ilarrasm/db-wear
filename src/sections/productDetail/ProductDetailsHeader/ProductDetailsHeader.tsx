@@ -1,41 +1,60 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { memo } from "react";
 import Image from "next/image";
-import { Box, Typography } from "@mui/material";
+import { Box } from "@mui/material";
 import { default as ImageProps } from "@/domain/models/Image";
+import dynamic from "next/dynamic";
 
-const ProductDetailsHeader = ({
-  title,
-  price,
-  image,
-  subTitle,
-}: {
-  title: string;
-  price: string;
-  image: ImageProps[];
-  subTitle: string;
-}) => {
+const LightBox = dynamic(() =>  import("@/features/LightBox/LightBox"), {ssr: true});
+
+const ProductDetailsHeader = ({ image }: { image: ImageProps[] }) => {
+  const [isLightBoxOpen, setOpenLight] = useState(false);
+  useEffect(() => {
+    console.log(isLightBoxOpen);
+  }, [isLightBoxOpen]);
   return (
-    <Box display="flex" flexDirection="column" gap="1rem">
-      <Box position="relative" height="600px">
-        <Image
-          src={image[0].src}
-          alt={image[0].alt}
-          fill
-          style={{ objectFit: "cover" }}
-        />
-      </Box>
-      <Box p="1rem">
-        <Typography variant="h1" textAlign="left">
-          {title}
-        </Typography>
-        <Typography variant="body2" fontStyle="italic" fontSize="10px" ml=".1rem">
-          Temporada {subTitle}
-        </Typography>
-        <Typography variant="body2" ml=".1rem">
-          {price}
-        </Typography>
-      </Box>
+    <Box
+      position="relative"
+      height="100%"
+      sx={{
+        ".&": { cursor: "pointer", userSelect: "none" },
+        body: { overflowY: "hidden" },
+      }}
+      onClick={() => {
+        setOpenLight(true);
+      }}
+    >
+      <Image
+        src={image[0].src}
+        alt={image[0].alt}
+        fill
+        style={{ objectFit: "cover" }}
+      />
+      <LightBox
+        open={isLightBoxOpen}
+        setOpen={() => {
+          console.log("sape");
+          setOpenLight(false);
+        }}
+        images={[
+          <Box
+            position="relative"
+            height="100%"
+            sx={{
+              cursor: "pointer",
+              " -webkit-tap-highlight-color": "transparent",
+            }}
+            key="firstImage"
+          >
+            <Image
+              src={image[0].src}
+              alt={image[0].alt}
+              fill
+              style={{ objectFit: "cover" }}
+            />
+          </Box>,
+        ]}
+      />
     </Box>
   );
 };
