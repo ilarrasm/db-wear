@@ -10,7 +10,7 @@ const Logo = ({ color = "black" }: { color?: ColorProp }) => {
         D&B
       </Typography>
       <Typography fontSize="12px" fontWeight="200" color={color}>
-        Costume Wear
+        Costumes Wear
       </Typography>
     </Box>
   );

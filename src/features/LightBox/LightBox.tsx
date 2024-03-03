@@ -1,26 +1,29 @@
-import {  Box, Dialog } from "@mui/material";
+import { Box, Dialog } from "@mui/material";
 import React, { ReactNode, memo } from "react";
 
 interface LightBoxProps {
-  images: ReactNode[];
+  children: ReactNode;
   open: boolean;
   setOpen: () => void;
 }
 
-const LightBox = ({ images, open, setOpen }: LightBoxProps) => {
+const LightBox = ({ children, open, setOpen }: LightBoxProps) => {
   return (
     <Dialog
       open={open}
       onClick={(e) => {
         e.stopPropagation();
-        setOpen();
+        if (!open) setOpen();
       }}
       maxWidth={false}
-      sx={{ "& .MuiDialog-paper": { backgroundColor: "transparent" } }}
+      sx={{
+        "& .MuiDialog-paper": { 
+          backgroundColor: "transparent",
+          position: "relative",
+        },
+      }}
     >
-      <Box width="90vw" height="90vh" borderRadius="8px" overflow="hidden">
-        {...images}
-      </Box>
+      {children}
     </Dialog>
   );
 };
