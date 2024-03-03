@@ -48,7 +48,6 @@ export const productSetServices = createApi({
         })) as ProductDetail[];
         const ListSorted = SetsList.sort(
           (a: ProductDetail, b: ProductDetail) => {
-            console.log(a, b)
             const prioridadA = indexCollections.includes(a.season);
             const prioridadB = indexCollections.includes(b.season);
 

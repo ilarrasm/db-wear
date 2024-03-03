@@ -15,6 +15,7 @@ import handleSSRIsMobile from "@/utils/SSR/handleSSRIsMobile";
 import useIsMobile from "@/hooks/useIsMobile";
 import priceFormatter from "@/utils/helpers/priceFormatter";
 import { Box, styled } from "@mui/material";
+import Head from "next/head";
 
 export const getServerSideProps = wrapper.getServerSideProps(
   (store) => async (ctx) => {
@@ -64,22 +65,28 @@ const ProductDetails: NextPageWithLayout = () => {
     skip: !query.id,
   });
   return (
-    <Box display="flex" justifyContent="center" width="100%">
-      <StyledContainer>
-        <ProductDetailsHeader image={data?.images || []} />
-        <ProductActionSection
-          title={data?.name || ""}
-          subTitle={data?.season || ""}
-          price={priceFormatter(data?.price)} // crear formateador
-          productId={data?.name || ""}
-          colors={data?.colors || []}
-          sizes={data?.size || []}
-        />
-        <ProductDescriptionSection>
-          {data?.description || ""}
-        </ProductDescriptionSection>
-      </StyledContainer>
-    </Box>
+    <>
+      <Head>
+        <title>{data?.name} - D&B costumes wear </title>
+        <meta name="description" content={data?.description} />
+      </Head>
+      <Box display="flex" justifyContent="center" width="100%">
+        <StyledContainer>
+          <ProductDetailsHeader image={data?.images || []} />
+          <ProductActionSection
+            title={data?.name || ""}
+            subTitle={data?.season || ""}
+            price={priceFormatter(data?.price)} // crear formateador
+            productId={data?.name || ""}
+            colors={data?.colors || []}
+            sizes={data?.size || []}
+          />
+          <ProductDescriptionSection>
+            {data?.description || ""}
+          </ProductDescriptionSection>
+        </StyledContainer>
+      </Box>
+    </>
   );
 };
 
