@@ -51,7 +51,6 @@ const Home: NextPageWithLayout = () => {
         <title>DB costumes wear</title>
         <meta name="description" content="Ropa de pole dance para hombres y mujeres." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
       </Head>
       <Box mb="32px">
         <Typography variant="h1" color="black" p="1rem">
